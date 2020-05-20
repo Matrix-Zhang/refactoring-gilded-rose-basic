@@ -1,6 +1,12 @@
 package cn.xpbootcamp.gilded_rose;
 
-public abstract class Commodity {
+interface CommodityInterface {
+    void updateQualityBeforeSellIn();
+    void updateSellIn();
+    void updateQualityAfterSellIn();
+}
+
+public abstract class Commodity implements CommodityInterface {
     public String name;
 
     int sellIn;
@@ -34,15 +40,20 @@ public abstract class Commodity {
         }
     }
 
-    public abstract void updateQualityBeforeSellIn();
-    public abstract void updateSellIn();
-    public abstract void updateQualityAfterSellIn();
+    @Override
+    public void updateQualityBeforeSellIn() {}
+
+    @Override
+    public void updateSellIn() {}
+
+    @Override
+    public void updateQualityAfterSellIn() {}
 
     public void updateQuality() {
-        this.updateQualityBeforeSellIn();
-        this.updateSellIn();
+        updateQualityBeforeSellIn();
+        updateSellIn();
         if (sellIn < 0) {
-            this.updateQualityAfterSellIn();
+            updateQualityAfterSellIn();
         }
     }
 
