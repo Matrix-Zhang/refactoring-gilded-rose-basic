@@ -26,6 +26,9 @@ public abstract class Commodity {
             case "Aged Brie":
                 return new AgedBrieCommodity(name, sellIn, quality);
 
+            case "Backstage passes to a TAFKAL80ETC concert":
+                return new BackstagePassCommodity(name, sellIn, quality);
+
             default:
                 return new NormalCommodity(name, sellIn, quality);
         }

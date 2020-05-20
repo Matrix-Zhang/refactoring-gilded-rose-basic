@@ -11,8 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class GildedRoseTest {
 
     @ParameterizedTest
-    //@MethodSource({"provideAgedBries", "provideBackstagePass", "provideSulfuras", "provideRegularItems"})
-    @MethodSource({"provideRegularItems", "provideSulfuras", "provideAgedBries"})
+    @MethodSource({"provideAgedBries", "provideBackstagePass", "provideSulfuras", "provideRegularItems"})
     void should_update_item_correctly(TestFixture testFixture) {
         Commodity commodity = createItem(testFixture.name, testFixture.sellIn, testFixture.quality);
 
@@ -33,21 +32,21 @@ class GildedRoseTest {
         );
     }
 
-//    private static Stream<TestFixture> provideBackstagePass() {
-//        return Stream.of(
-//                TestFixture.createBackstagePass(15, 20, 14, 21),
-//                TestFixture.createBackstagePass(11, 20, 10, 21),
-//                TestFixture.createBackstagePass(10, 45, 9, 47),
-//                TestFixture.createBackstagePass(9, 45, 8, 47),
-//                TestFixture.createBackstagePass(10, 49, 9, 50),
-//                TestFixture.createBackstagePass(10, 50, 9, 50),
-//                TestFixture.createBackstagePass(6, 45, 5, 47),
-//                TestFixture.createBackstagePass(5, 45, 4, 48),
-//                TestFixture.createBackstagePass(5, 49, 4, 50),
-//                TestFixture.createBackstagePass(1, 20, 0, 23),
-//                TestFixture.createBackstagePass(0, 20, -1, 0)
-//        );
-//    }
+    private static Stream<TestFixture> provideBackstagePass() {
+        return Stream.of(
+                TestFixture.createBackstagePass(15, 20, 14, 21),
+                TestFixture.createBackstagePass(11, 20, 10, 21),
+                TestFixture.createBackstagePass(10, 45, 9, 47),
+                TestFixture.createBackstagePass(9, 45, 8, 47),
+                TestFixture.createBackstagePass(10, 49, 9, 50),
+                TestFixture.createBackstagePass(10, 50, 9, 50),
+                TestFixture.createBackstagePass(6, 45, 5, 47),
+                TestFixture.createBackstagePass(5, 45, 4, 48),
+                TestFixture.createBackstagePass(5, 49, 4, 50),
+                TestFixture.createBackstagePass(1, 20, 0, 23),
+                TestFixture.createBackstagePass(0, 20, -1, 0)
+        );
+    }
 
     private static Stream<TestFixture> provideSulfuras() {
         return Stream.of(
@@ -98,9 +97,9 @@ class GildedRoseTest {
         public static TestFixture createSulfuras(int sellIn, int quality, int updatedSellIn, int updatedQuality) {
             return new TestFixture("Sulfuras, Hand of Ragnaros", sellIn, quality, updatedSellIn, updatedQuality);
         }
-//
-//        public static TestFixture createBackstagePass(int sellIn, int quality, int updatedSellIn, int updatedQuality) {
-//            return new TestFixture("Backstage passes to a TAFKAL80ETC concert", sellIn, quality, updatedSellIn, updatedQuality);
-//        }
+
+        public static TestFixture createBackstagePass(int sellIn, int quality, int updatedSellIn, int updatedQuality) {
+            return new TestFixture("Backstage passes to a TAFKAL80ETC concert", sellIn, quality, updatedSellIn, updatedQuality);
+        }
     }
 }
