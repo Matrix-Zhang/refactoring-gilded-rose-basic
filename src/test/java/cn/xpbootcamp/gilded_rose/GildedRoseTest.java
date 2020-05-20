@@ -10,18 +10,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class GildedRoseTest {
 
-    @ParameterizedTest
-    @MethodSource({"provideAgedBries", "provideBackstagePass", "provideSulfuras", "provideRegularItems"})
-    void should_update_item_correctly(TestFixture testFixture) {
-        Commodity commodity = createItem(testFixture.name, testFixture.sellIn, testFixture.quality);
-
-        new GildedRose(new Commodity[]{commodity}).update_quality();
-
-        Commodity expectedCommodity = createItem(testFixture.name, testFixture.updatedSellIn, testFixture.updatedQuality);
-        System.out.println(commodity.toString() + ' ' + expectedCommodity.toString());
-        assertThat(commodity.toString()).isEqualTo(expectedCommodity.toString());
-    }
-
     private static Stream<TestFixture> provideAgedBries() {
         return Stream.of(
                 TestFixture.createAgedBrie(2, 0, 1, 1),
@@ -68,7 +56,19 @@ class GildedRoseTest {
     }
 
     private static Commodity createItem(String name, int sellIn, int quality) {
-        return  Commodity.createItem(name, sellIn, quality);
+        return Commodity.createItem(name, sellIn, quality);
+    }
+
+    @ParameterizedTest
+    @MethodSource({"provideAgedBries", "provideBackstagePass", "provideSulfuras", "provideRegularItems"})
+    void should_update_item_correctly(TestFixture testFixture) {
+        Commodity commodity = createItem(testFixture.name, testFixture.sellIn, testFixture.quality);
+
+        new GildedRose(new Commodity[]{commodity}).update_quality();
+
+        Commodity expectedCommodity = createItem(testFixture.name, testFixture.updatedSellIn, testFixture.updatedQuality);
+        System.out.println(commodity.toString() + ' ' + expectedCommodity.toString());
+        assertThat(commodity.toString()).isEqualTo(expectedCommodity.toString());
     }
 
     private static class TestFixture {

@@ -8,7 +8,7 @@ class GildedRose {
     }
 
     public void update_quality() {
-        for(Commodity commodity: commodities) {
+        for (Commodity commodity : commodities) {
             commodity.updateQuality();
         }
 //        for (Commodity commodity : commodities) {

@@ -19,6 +19,6 @@ public class NormalCommodity extends Commodity {
 
     @Override
     public void updateQualityAfterSellIn() {
-            quality--;
+        quality--;
     }
 }

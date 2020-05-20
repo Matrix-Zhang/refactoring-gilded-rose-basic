@@ -2,7 +2,9 @@ package cn.xpbootcamp.gilded_rose;
 
 interface CommodityInterface {
     void updateQualityBeforeSellIn();
+
     void updateSellIn();
+
     void updateQualityAfterSellIn();
 }
 
@@ -11,11 +13,7 @@ public abstract class Commodity implements CommodityInterface {
 
     int sellIn;
 
-   int quality;
-
-    public int getQuality() {
-       return Math.min(Math.max(0, this.quality), 50);
-    }
+    int quality;
 
     public Commodity(String name, int sellIn, int quality) {
         this.name = name;
@@ -23,9 +21,8 @@ public abstract class Commodity implements CommodityInterface {
         this.quality = quality;
     }
 
-
     public static Commodity createItem(String name, int sellIn, int quality) {
-        switch(name) {
+        switch (name) {
             case "Sulfuras, Hand of Ragnaros":
                 return new SulfurasCommodity(name, sellIn, quality);
 
@@ -40,14 +37,21 @@ public abstract class Commodity implements CommodityInterface {
         }
     }
 
-    @Override
-    public void updateQualityBeforeSellIn() {}
+    public int getQuality() {
+        return Math.min(Math.max(0, this.quality), 50);
+    }
 
     @Override
-    public void updateSellIn() {}
+    public void updateQualityBeforeSellIn() {
+    }
 
     @Override
-    public void updateQualityAfterSellIn() {}
+    public void updateSellIn() {
+    }
+
+    @Override
+    public void updateQualityAfterSellIn() {
+    }
 
     public void updateQuality() {
         updateQualityBeforeSellIn();
