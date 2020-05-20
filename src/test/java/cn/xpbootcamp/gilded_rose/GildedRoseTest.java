@@ -12,7 +12,7 @@ class GildedRoseTest {
 
     @ParameterizedTest
     //@MethodSource({"provideAgedBries", "provideBackstagePass", "provideSulfuras", "provideRegularItems"})
-    @MethodSource({"provideRegularItems", "provideSulfuras"})
+    @MethodSource({"provideRegularItems", "provideSulfuras", "provideAgedBries"})
     void should_update_item_correctly(TestFixture testFixture) {
         Commodity commodity = createItem(testFixture.name, testFixture.sellIn, testFixture.quality);
 
@@ -23,15 +23,15 @@ class GildedRoseTest {
         assertThat(commodity.toString()).isEqualTo(expectedCommodity.toString());
     }
 
-//    private static Stream<TestFixture> provideAgedBries() {
-//        return Stream.of(
-//                TestFixture.createAgedBrie(2, 0, 1, 1),
-//                TestFixture.createAgedBrie(2, 49, 1, 50),
-//                TestFixture.createAgedBrie(2, 50, 1, 50),
-//                TestFixture.createAgedBrie(0, 20, -1, 22),
-//                TestFixture.createAgedBrie(-1, 20, -2, 22)
-//        );
-//    }
+    private static Stream<TestFixture> provideAgedBries() {
+        return Stream.of(
+                TestFixture.createAgedBrie(2, 0, 1, 1),
+                TestFixture.createAgedBrie(2, 49, 1, 50),
+                TestFixture.createAgedBrie(2, 50, 1, 50),
+                TestFixture.createAgedBrie(0, 20, -1, 22),
+                TestFixture.createAgedBrie(-1, 20, -2, 22)
+        );
+    }
 
 //    private static Stream<TestFixture> provideBackstagePass() {
 //        return Stream.of(
@@ -91,10 +91,10 @@ class GildedRoseTest {
             return new TestFixture(name, sellIn, quality, updatedSellIn, updatedQuality);
         }
 
-//        public static TestFixture createAgedBrie(int sellIn, int quality, int updatedSellIn, int updatedQuality) {
-//            return new TestFixture("Aged Brie", sellIn, quality, updatedSellIn, updatedQuality);
-//        }
-//
+        public static TestFixture createAgedBrie(int sellIn, int quality, int updatedSellIn, int updatedQuality) {
+            return new TestFixture("Aged Brie", sellIn, quality, updatedSellIn, updatedQuality);
+        }
+
         public static TestFixture createSulfuras(int sellIn, int quality, int updatedSellIn, int updatedQuality) {
             return new TestFixture("Sulfuras, Hand of Ragnaros", sellIn, quality, updatedSellIn, updatedQuality);
         }

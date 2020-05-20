@@ -23,6 +23,9 @@ public abstract class Commodity {
             case "Sulfuras, Hand of Ragnaros":
                 return new SulfurasCommodity(name, sellIn, quality);
 
+            case "Aged Brie":
+                return new AgedBrieCommodity(name, sellIn, quality);
+
             default:
                 return new NormalCommodity(name, sellIn, quality);
         }
@@ -35,7 +38,9 @@ public abstract class Commodity {
     public void updateQuality() {
         this.updateQualityBeforeSellIn();
         this.updateSellIn();
-        this.updateQualityAfterSellIn();
+        if (sellIn < 0) {
+            this.updateQualityAfterSellIn();
+        }
     }
 
     @Override

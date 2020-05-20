@@ -1,15 +1,13 @@
 package cn.xpbootcamp.gilded_rose;
 
-public class NormalCommodity extends Commodity {
-    public static final String tag = "NormalCommodity";
-
-    public NormalCommodity(String name, int sellIn, int quality) {
+public class AgedBrieCommodity extends Commodity {
+    public AgedBrieCommodity(String name, int sellIn, int quality) {
         super(name, sellIn, quality);
     }
 
     @Override
     public void updateQualityBeforeSellIn() {
-        quality--;
+        quality = quality + 1;
     }
 
     @Override
@@ -19,6 +17,6 @@ public class NormalCommodity extends Commodity {
 
     @Override
     public void updateQualityAfterSellIn() {
-            quality--;
+        quality = quality + 1;
     }
 }
