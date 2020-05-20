@@ -1,7 +1,6 @@
 package cn.xpbootcamp.gilded_rose;
 
 public abstract class Commodity {
-
     public String name;
 
     int sellIn;
@@ -21,17 +20,21 @@ public abstract class Commodity {
 
     public static Commodity createItem(String name, int sellIn, int quality) {
         switch(name) {
+            case "Sulfuras, Hand of Ragnaros":
+                return new SulfurasCommodity(name, sellIn, quality);
+
             default:
                 return new NormalCommodity(name, sellIn, quality);
         }
     }
 
     public abstract void updateQualityBeforeSellIn();
+    public abstract void updateSellIn();
     public abstract void updateQualityAfterSellIn();
 
     public void updateQuality() {
         this.updateQualityBeforeSellIn();
-        this.sellIn--;
+        this.updateSellIn();
         this.updateQualityAfterSellIn();
     }
 

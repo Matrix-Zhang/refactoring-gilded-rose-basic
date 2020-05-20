@@ -12,7 +12,7 @@ class GildedRoseTest {
 
     @ParameterizedTest
     //@MethodSource({"provideAgedBries", "provideBackstagePass", "provideSulfuras", "provideRegularItems"})
-    @MethodSource({"provideRegularItems"})
+    @MethodSource({"provideRegularItems", "provideSulfuras"})
     void should_update_item_correctly(TestFixture testFixture) {
         Commodity commodity = createItem(testFixture.name, testFixture.sellIn, testFixture.quality);
 
@@ -49,14 +49,14 @@ class GildedRoseTest {
 //        );
 //    }
 
-//    private static Stream<TestFixture> provideSulfuras() {
-//        return Stream.of(
-//                TestFixture.createSulfuras(-1, 50, -1, 50),
-//                TestFixture.createSulfuras(-1, 1, -1, 1),
-//                TestFixture.createSulfuras(-2, 1, -2, 1),
-//                TestFixture.createSulfuras(1, 1, 1, 1)
-//        );
-//    }
+    private static Stream<TestFixture> provideSulfuras() {
+        return Stream.of(
+                TestFixture.createSulfuras(-1, 50, -1, 50),
+                TestFixture.createSulfuras(-1, 1, -1, 1),
+                TestFixture.createSulfuras(-2, 1, -2, 1),
+                TestFixture.createSulfuras(1, 1, 1, 1)
+        );
+    }
 
     private static Stream<TestFixture> provideRegularItems() {
         return Stream.of(
@@ -95,9 +95,9 @@ class GildedRoseTest {
 //            return new TestFixture("Aged Brie", sellIn, quality, updatedSellIn, updatedQuality);
 //        }
 //
-//        public static TestFixture createSulfuras(int sellIn, int quality, int updatedSellIn, int updatedQuality) {
-//            return new TestFixture("Sulfuras, Hand of Ragnaros", sellIn, quality, updatedSellIn, updatedQuality);
-//        }
+        public static TestFixture createSulfuras(int sellIn, int quality, int updatedSellIn, int updatedQuality) {
+            return new TestFixture("Sulfuras, Hand of Ragnaros", sellIn, quality, updatedSellIn, updatedQuality);
+        }
 //
 //        public static TestFixture createBackstagePass(int sellIn, int quality, int updatedSellIn, int updatedQuality) {
 //            return new TestFixture("Backstage passes to a TAFKAL80ETC concert", sellIn, quality, updatedSellIn, updatedQuality);
