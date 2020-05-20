@@ -1,59 +1,59 @@
 package cn.xpbootcamp.gilded_rose;
 
 class GildedRose {
-    Item[] items;
+    Commodity[] commodities;
 
-    public GildedRose(Item[] items) {
-        this.items = items;
+    public GildedRose(Commodity[] commodities) {
+        this.commodities = commodities;
     }
 
     public void update_quality() {
-        for (int i = 0; i < items.length; i++) {
-            if (!items[i].name.equals("Aged Brie")
-                    && !items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                if (items[i].quality > 0) {
-                    if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
-                        items[i].quality = items[i].quality - 1;
+        for (int i = 0; i < commodities.length; i++) {
+            if (!commodities[i].name.equals("Aged Brie")
+                    && !commodities[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+                if (commodities[i].quality > 0) {
+                    if (!commodities[i].name.equals("Sulfuras, Hand of Ragnaros")) {
+                        commodities[i].quality = commodities[i].quality - 1;
                     }
                 }
             } else {
-                if (items[i].quality < 50) {
-                    items[i].quality = items[i].quality + 1;
+                if (commodities[i].quality < 50) {
+                    commodities[i].quality = commodities[i].quality + 1;
 
-                    if (items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                        if (items[i].sellIn < 11) {
-                            if (items[i].quality < 50) {
-                                items[i].quality = items[i].quality + 1;
+                    if (commodities[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+                        if (commodities[i].sellIn < 11) {
+                            if (commodities[i].quality < 50) {
+                                commodities[i].quality = commodities[i].quality + 1;
                             }
                         }
 
-                        if (items[i].sellIn < 6) {
-                            if (items[i].quality < 50) {
-                                items[i].quality = items[i].quality + 1;
+                        if (commodities[i].sellIn < 6) {
+                            if (commodities[i].quality < 50) {
+                                commodities[i].quality = commodities[i].quality + 1;
                             }
                         }
                     }
                 }
             }
 
-            if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
-                items[i].sellIn = items[i].sellIn - 1;
+            if (!commodities[i].name.equals("Sulfuras, Hand of Ragnaros")) {
+                commodities[i].sellIn = commodities[i].sellIn - 1;
             }
 
-            if (items[i].sellIn < 0) {
-                if (!items[i].name.equals("Aged Brie")) {
-                    if (!items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                        if (items[i].quality > 0) {
-                            if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
-                                items[i].quality = items[i].quality - 1;
+            if (commodities[i].sellIn < 0) {
+                if (!commodities[i].name.equals("Aged Brie")) {
+                    if (!commodities[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+                        if (commodities[i].quality > 0) {
+                            if (!commodities[i].name.equals("Sulfuras, Hand of Ragnaros")) {
+                                commodities[i].quality = commodities[i].quality - 1;
                             }
                         }
                     } else {
-                        items[i].quality = 0;
+                        commodities[i].quality = 0;
                     }
                 } else {
-                    if (items[i].quality < 50) {
-                        items[i].quality = items[i].quality + 1;
+                    if (commodities[i].quality < 50) {
+                        commodities[i].quality = commodities[i].quality + 1;
                     }
                 }
             }
