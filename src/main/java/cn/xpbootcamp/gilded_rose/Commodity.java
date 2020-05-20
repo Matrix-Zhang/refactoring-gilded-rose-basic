@@ -1,12 +1,16 @@
 package cn.xpbootcamp.gilded_rose;
 
-public class Commodity {
+public abstract class Commodity {
 
     public String name;
 
-    public int sellIn;
+    int sellIn;
 
-    public int quality;
+   int quality;
+
+    public int getQuality() {
+       return Math.min(Math.max(0, this.quality), 50);
+    }
 
     public Commodity(String name, int sellIn, int quality) {
         this.name = name;
@@ -14,8 +18,25 @@ public class Commodity {
         this.quality = quality;
     }
 
+
+    public static Commodity createItem(String name, int sellIn, int quality) {
+        switch(name) {
+            default:
+                return new NormalCommodity(name, sellIn, quality);
+        }
+    }
+
+    public abstract void updateQualityBeforeSellIn();
+    public abstract void updateQualityAfterSellIn();
+
+    public void updateQuality() {
+        this.updateQualityBeforeSellIn();
+        this.sellIn--;
+        this.updateQualityAfterSellIn();
+    }
+
     @Override
     public String toString() {
-        return this.name + ", " + this.sellIn + ", " + this.quality;
+        return this.name + ", " + this.sellIn + ", " + this.getQuality();
     }
 }
